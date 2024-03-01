@@ -1,0 +1,18 @@
+<p class="text-center fs-4">
+  <%= @gm.board_text %>
+</p>
+
+<table id="tic-tac-toe-container" class="table table-bordered mx-auto" style="width: auto;">
+  <% @gm.board.each_slice(3).with_index do |row, row_index| %>
+    <tr>
+      <% row.each_with_index do |cell, cell_index| %>
+        <td class="text-center" style="width: 60px; height: 60px;">
+          <%= form_with(url: move_path, method: :post, class: "d-grid h-100") do |form| %>
+            <%= hidden_field_tag :index, row_index * 3 + cell_index %>
+            <%= button_tag cell || " ", class: "btn btn-light border cell-btn fw-bold", disabled: (cell.present? || @gm.winner.present?) %>
+          <% end %>
+        </td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>

@@ -1,0 +1,20 @@
+<div class="container mt-5 text-center">
+  <h1>Tic-Tac-Toe</h1>
+
+  <%# Check if the game is ready to be played or names need to be entered %>
+  <% if @gm.ready? %>
+    <%# Render the game board if the game is ongoing and no winner yet %>
+    <%= render 'games/board' %>
+
+    <% if @gm.winner %>
+      <%# Offer to reset the game if a winner is declared or if it's a draw %>
+      <div class="d-flex justify-content-center mt-3">
+        <%= button_to 'Restart', restart_path, method: :post, class: "btn btn-primary me-2" %>
+        <%= button_to 'Reset', reset_path, method: :post, class: "btn btn-danger" %>
+      </div>
+    <% end %>
+  <% else %>
+    <%# Render the name input form if the game is not ready %>
+    <%= render 'games/input_name' %>
+  <% end %>
+</div>

@@ -1,0 +1,11 @@
+<%= form_with(url: set_names_path, method: :post, class: "my-4") do |form| %>
+  <div class="mb-3">
+    <%= label_tag :player_1_name, "(X) Player 1 Name", class: "form-label" %>
+    <%= text_field_tag :player_1_name, "", placeholder: "Player 1", class: "form-control text-center mx-auto" %>
+  </div>
+  <div class="mb-3">
+    <%= label_tag :player_2_name, "(O) Player 2 Name", class: "form-label" %>
+    <%= text_field_tag :player_2_name, "", placeholder: "Player 2", class: "form-control text-center mx-auto" %>
+  </div>
+  <%= submit_tag "Start", class: "btn btn-primary" %>
+<% end %>
