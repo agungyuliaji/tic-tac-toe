@@ -22,6 +22,11 @@ class GamesController < ApplicationController
     redirect_to root_path
   end
 
+  def end_turn
+    @gm.switch_player
+    redirect_to root_path
+  end
+
   def restart
     @gm.restart
     redirect_to root_path

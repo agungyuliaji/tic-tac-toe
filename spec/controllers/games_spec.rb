@@ -28,7 +28,16 @@ RSpec.describe GamesController, type: :controller do
       session[:board] = Array.new(9)
       post :move, params: { index: 0 }, session: dummy_session
 
-      expect(session[:board][0]).not_to be_nil
+      expect(session[:board][0]).to eq('X')
+      expect(response).to redirect_to(root_path)
+    end
+  end
+
+  describe "POST #end_turn" do
+    it "switches the current player (first init default 'X') to player 'O' and redirects to the root path" do
+      post :end_turn
+
+      expect(session[:current_player]).to eq("O")
       expect(response).to redirect_to(root_path)
     end
   end
